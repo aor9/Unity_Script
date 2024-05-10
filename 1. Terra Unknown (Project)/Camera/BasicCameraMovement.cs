@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
-//TODO: 현재 pc 에서 wasd, 마우스 우클릭으로 카메라 이동을 하게 되어 있음. 모바일 버전에 맞게 수정 필요.
 public class BasicCameraMovement : MonoBehaviour
 {
     
@@ -183,7 +182,7 @@ public class BasicCameraMovement : MonoBehaviour
         freeCam.m_Lens.OrthographicSize = Mathf.Lerp(battleCam1.m_Lens.OrthographicSize, targetOrthoSize, Time.deltaTime * zoomSpeed);
     }
 
-    // 전투시 카메라 전환을 위한 vcam 설정 변경
+    // 전투시 카메라 전환을 위한 cinemachine vcam 설정 변경
     public void ChangeVcamFollow(GameObject obj, int camIdx)
     {
         if (camIdx % 2 == 1)

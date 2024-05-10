@@ -8,12 +8,11 @@ using System.Linq;
  using UnityEngine;
  using AnimationState = Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterScripts.AnimationState;
  using Random = UnityEngine.Random;
-
- // TODO: Enemy의 유형에 따른 AI를 구분해야할 필요가 있음.
- // TODO: 기본이되는 enemy ai를 만들고 적의 type에 따라서 기본 enemy ai를 상속받는 다양한 enemy ai를 만들어야 할 것 같다.
- // TODO: 근거리 type, 원거리 type, 보스 등 다양한 AI
+ 
+ // TODO : Boss AI 추가, AI 들을 상속 구조로 변경
 public partial class EnemyAI : MonoBehaviour
 {
+    // 적 행동 State
     public enum ActionState
     {
         Default,
@@ -186,11 +185,6 @@ public partial class EnemyAI : MonoBehaviour
         
         destinationTile = movableTiles[idx];
         path = pathFinder.FindPath(battleSystem.TurnOrderList[battleSystem.TurnOrderIdx].standingOnTile, destinationTile, movableTiles, enemy);
-
-        if (destinationTile.isUnitOn = true)
-        {
-            Debug.Log("왜 유닛이 서 있는 곳을 destination TilE 로 정한거임?? ");
-        }
 
         enemy.standingOnTile.isUnitOn = false;
         destinationTile.isUnitOn = true;

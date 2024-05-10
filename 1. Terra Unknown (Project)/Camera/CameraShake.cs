@@ -24,6 +24,7 @@ public class CameraShake : MonoBehaviour
         StopShake();
     }
 
+    // 카메라 흔들림 효과
     public void ShakeCamera()
     {
         CinemachineBasicMultiChannelPerlin _cbmcp = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();

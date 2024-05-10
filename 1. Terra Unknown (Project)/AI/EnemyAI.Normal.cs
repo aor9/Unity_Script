@@ -66,7 +66,6 @@ public partial class EnemyAI
             foreach (var unit in playerList)
             {
                 StartCoroutine(AttackPlayer(enemy, unit));
-                //공격,데미지 표시 이펙트
                 StartCoroutine(skillEffectController.EffectTimingControl("none","none","normal",false,enemy.damage, 
                     enemy.transform.gameObject, player.transform.gameObject));
                 player.GetComponent<CharacterControl>().Character.Blink();
@@ -105,7 +104,6 @@ public partial class EnemyAI
             bool isDodge = IsDodge(player);
             if (isDodge == false)
             {
-                //공격,데미지 표시 이펙트
                 StartCoroutine(skillEffectController.EffectTimingControl("none","none","normal",false,enemy.damage, 
                     enemy.transform.gameObject, player.transform.gameObject));
                 player.GetComponent<CharacterControl>().Character.Blink();

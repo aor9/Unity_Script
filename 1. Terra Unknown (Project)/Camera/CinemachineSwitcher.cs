@@ -11,7 +11,7 @@ public class CinemachineSwitcher : MonoBehaviour
     public CinemachineVirtualCamera battleCam2;
     
 
-    // priority 값을 변경하여 카메라 바꾼다.
+    // priority 값을 변경하여 가상 카메라를 변경하는 메소드
     public void SwitchPriorityToFreeCam()
     {
         if (battleCam1.Priority == 2)

@@ -91,7 +91,8 @@ public class MapManager : MonoBehaviour
                         
                         overlayTile.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z + 0.0001f);
                         overlayTile.gridLocation = tileLocation;
-                        // sorting order를 벽이냐 아니냐에 따라 나눠놓음 -> 캐릭터가 이동할때 맵이랑 sorting order가 같으면 겹쳐서 보이는 버그 때문에
+                        
+                        // 바닥 위에 있는 오브젝트들 처리
                         if (overlayTile.gridLocation.z > 0)
                         {
                             overlayTile.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
