@@ -122,9 +122,7 @@ public class DropObject: MonoBehaviour
     {
         var _map = MapManager.Instance.map;
         OverlayTile startingTile = tile;
-        //콧물석 타일
         int range = 1;
-        //콧물석 효과 범위
 
         diagonalTiles = new List<OverlayTile>();
         var keys = new List<Vector3Int>();
@@ -149,20 +147,6 @@ public class DropObject: MonoBehaviour
                 }
             }
         }
-        /*foreach (var item in diagonalTiles)
-        {
-            if (item == diagonalTiles[0])
-            {
-                item.ShowTile(ActionState.ATTACK);
-            }
-            //콧물석 범위 중앙 색
-            else
-            {
-                item.ShowTile(ActionState.DEFAULT);
-            }
-            //콧물석 주변 범위 색
-        }
-        */
     }
     //TODO : RangeFinder로 연결해서 사용하는게 더 깔끔할거같음
 
@@ -234,27 +218,21 @@ public class DropObject: MonoBehaviour
         {
             int idx = 0;
 
-                foreach (var player in turnorderlist)
+            foreach (var player in turnorderlist)
+            {
+                if (player.type != "Player")
                 {
-                    if (player.type != "Player")
-                    {
-                        idx++;
-                        continue;
-                    }
-
-                    if (tile == player.standingOnTile)
-                    {
-                        DropAttack(player, idx);
-                        //hide = true;
-                    }
-
                     idx++;
+                    continue;
                 }
-        }
 
-        /*(if (hide == false)
-        {
-            foreach (var tile in diagonalTiles) tile.HideTile();
-        }*/
+                if (tile == player.standingOnTile)
+                {
+                    DropAttack(player, idx);
+                }
+
+                idx++;
+            }
+        }
     }
 }

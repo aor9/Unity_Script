@@ -6,6 +6,7 @@ using UnityEngine;
 // 범위 찾는 클래스 (공격, 이동 범위)
 public class RangeFinder
 {
+    // 범위 내의 타일을 갖고오는 메소드
     public List<OverlayTile> GetTilesInRange(OverlayTile startingTile, int range)
     {
         var inRangeTiles = new List<OverlayTile>();
@@ -38,6 +39,7 @@ public class RangeFinder
         return inRangeTiles.Distinct().ToList();
     }
 
+    // 특정 모양, 좌표의 범위를 가져오는 메소드
     public List<OverlayTile> GetTilesByCoordinate(OverlayTile startingTile, int range, string type)
     {
         var inRangeTiles = new List<OverlayTile>();
@@ -45,7 +47,7 @@ public class RangeFinder
         
         inRangeTiles.Add(startingTile);
 
-        if (type == "cross")//대각선 범위
+        if (type == "cross")    //대각선 범위
         {
             var crossTiles = new List<OverlayTile>();
             
@@ -68,7 +70,7 @@ public class RangeFinder
             
             inRangeTiles.AddRange(crossTiles);
         } 
-        else if (type == "diagonal")//수직 범위
+        else if (type == "diagonal")    //수직 범위
         {
             var diagonalTiles = new List<OverlayTile>();
             
@@ -91,7 +93,7 @@ public class RangeFinder
             
             inRangeTiles.AddRange(diagonalTiles);
         }
-        else if (type == "square")//사각형 범위
+        else if (type == "square")  //사각형 범위
         {
             var squareTiles = new List<OverlayTile>();
             var keys = new List<Vector3Int>();

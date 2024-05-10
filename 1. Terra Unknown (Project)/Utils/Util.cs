@@ -12,7 +12,7 @@ public class Util
         return component;
 	}
 
-    // GameObject mapping 할때 쓰이는 version
+    // GameObject
     public static GameObject FindChild(GameObject go, string name = null, bool recursive = false)
     {
         Transform transform = FindChild<Transform>(go, name, recursive);
@@ -22,8 +22,7 @@ public class Util
         return transform.gameObject;
     }
 
-    // recursive 한 경우 -> 자식의 자식까지 다 보는것
-    // recursive 하지 않은 경우 -> 직속 자식만 보는것
+    // recursive : 자식의 자식까지 확인할 것인가
     public static T FindChild<T>(GameObject go, string name = null, bool recursive = false) where T : UnityEngine.Object
     {
         if (go == null)

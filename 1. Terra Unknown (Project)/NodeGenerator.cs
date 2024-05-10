@@ -74,7 +74,7 @@ public class NodeGenerator : MonoBehaviour
         nodeRoot.parent = nodeMapRoot;
         lineRoot.parent = nodeMapRoot;  
         
-        // 노드를 생성하는 코드
+        // 노드 생성
         for (int i = 0; i < x; i++)
         {
             for (int j = 0; j < y; j++)

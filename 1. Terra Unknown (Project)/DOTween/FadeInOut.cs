@@ -7,16 +7,6 @@ public class FadeInOut : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;
     private Tween fadeTween;
- 
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
-    }
 
     public void FadeIn(float duration)
     {

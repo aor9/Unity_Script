@@ -29,21 +29,4 @@ public class Define
         Effect,
         MaxCount,
     }
-    
-    public enum UIEvent
-    {
-        Click,
-        Drag,
-    }
-
-    public enum MouseEvent
-    {
-        Press,
-        Click,
-    }
-
-    public enum CameraMode
-    {
-        QuarterView,
-    }
 }

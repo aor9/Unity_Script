@@ -21,6 +21,7 @@ public class NodeMapScene : BaseScene
         //TODO: boss, normal nodemap 구분
         SceneType = Define.Scene.BossNodeMap;
         
+        // NodeMap 불러오거나 활성화
         if (GameObject.Find("@NodeMap_Root") is null)
         {
             GameObject nodeGenerator = Managers.Resource.Instantiate("NodeGenerator");
@@ -59,7 +60,6 @@ public class NodeMapScene : BaseScene
     IEnumerator BgmStart()
     {
         yield return new WaitForSeconds(0.3f);
-        // audio test
         AudioManager.instance.PlayBgm(true, AudioManager.Bgm.Main);
     }
     

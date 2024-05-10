@@ -18,6 +18,7 @@ public class TurnOrderUI : MonoBehaviour
         battleSystem = battleSystemObject.GetComponent<BattleSystem>();
     }
 
+    // 필드에 있는 유닛들의 초상화 이미지를 가져오는 메소드
     public IEnumerator GetPortrait()
     {
         yield return new WaitForSeconds(0.1f);
@@ -65,6 +66,7 @@ public class TurnOrderUI : MonoBehaviour
         BindTurnOrderImg();
     }
 
+    // 가져온 초상화 이미지를 UI canvas에 배치하는 메소드
     private void BindTurnOrderImg()
     {
         int i = 0;

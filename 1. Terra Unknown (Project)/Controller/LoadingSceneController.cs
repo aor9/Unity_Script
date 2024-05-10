@@ -7,7 +7,6 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 using Random = System.Random;
 
-// 로딩창 클래스
 public class LoadingSceneController : MonoBehaviour
 {
     protected static LoadingSceneController instance;
@@ -102,7 +101,7 @@ public class LoadingSceneController : MonoBehaviour
         mapGameObject = Managers.Resource.Instantiate("object/Map");
         DontDestroyOnLoad(mapGameObject);
         mapGameObject.GetComponentInChildren<TilemapRenderer>().material.color = new Color(1, 1, 1, 0);
-
+        
         // 맵의 바닥을 만드는 코드
         tilemap = mapGameObject.GetComponentInChildren<Tilemap>();
         

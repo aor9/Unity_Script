@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
+//DOTWEEN을 사용한 현재 턴인 플레이어 위에 화살표를 표시하고 움직이게하는 클래스
 public class DownArrowMove : MonoBehaviour
 {
     public void ShowDownArrow()

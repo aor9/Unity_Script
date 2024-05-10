@@ -77,11 +77,9 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(SetupBattle());
     }
     
-    // 전투를 시작하기전 해야하는 것들을 하는 코루틴
-    // TODO: InitBattle() 로 이름을 바꿀까
+    // 제일 첫 전투를 진행하는 코루틴
     IEnumerator SetupBattle()
     {
-        Debug.Log(turnOrderUI);
         StartCoroutine(turnOrderUI.GetPortrait());
         uiPopupManager.DOTPopDownUI(stagePopup);
         if (TurnOrderList[TurnOrderIdx].type == "Player")
@@ -92,7 +90,6 @@ public class BattleSystem : MonoBehaviour
             camMovement.updateFreeCamPos = true;
             
             battleState = BattleState.PLAYERTURN;
-            Debug.Log($"{TurnOrderIdx}번마");
             PlayerTurn();
         } 
         else if (TurnOrderList[TurnOrderIdx].type == "Enemy")
@@ -103,20 +100,18 @@ public class BattleSystem : MonoBehaviour
             camMovement.updateFreeCamPos = true;
             
             battleState = BattleState.ENEMYTURN;
-            //cursor.SetActive(false);
             playerController.enabled = false;
             StartCoroutine(EnemyTurn());
         }
     }
-
-    // TODO: 카메라 설정하는 메소드인데 이릉이 명확하지가 않아서 어떤 기능인지 헷갈림. 수정 필요.
+    
     private void SetCamObj()
     {
         camObj = TurnOrderList[TurnOrderIdx].gameObject;
         camIdx++;
     }
 
-    // 턴이 끝나고 난 후 다음턴은 누구인지, 설정하는 메소드
+    // 턴이 끝나고 난 후 다음턴은 누구인지 설정하는 메소드
     public IEnumerator TurnEnd()
     {
         StartCoroutine(turnOrderUI.GetPortrait());
@@ -138,9 +133,9 @@ public class BattleSystem : MonoBehaviour
         }
         else if (TurnOrderList[TurnOrderIdx].type == "Player")
         { 
+            // 콧물석 드랍
             if (snottiteTile != null) 
-            { 
-                //dropObject.Drop(snottiteTile);
+            {
                 dropObject.DropObjectEffect(TurnOrderList);
                 StartCoroutine(skillEffectController.DropEffectTimingControl
                     ("DropEffect01","WaterEffect",snottiteTile.transform.GameObject()));
@@ -151,18 +146,15 @@ public class BattleSystem : MonoBehaviour
                     warnObject = null;
                 }
             }
-            //드랍 하는 턴이면 콧물석 드랍
             snottiteTile = dropObject.CheckDrop();
-            //콧물석 드랍 판정
             if (snottiteTile != null)
             {
-                //콧물석 경고 표시
                 warnObject = skillEffectController.SpawnWarnEffect(snottiteTile.transform.position);
                 dropObject.GetEffectTiles(snottiteTile);
             }
+            
             SetCamObj();
             battleState = BattleState.PLAYERTURN;
-            Debug.Log($"{TurnOrderIdx}번마");
             yield return wfs;
             camMovement.ChangeVcamFollow(camObj, camIdx);
             yield return wfs;
@@ -185,7 +177,6 @@ public class BattleSystem : MonoBehaviour
             }
             SetCamObj();
             battleState = BattleState.ENEMYTURN;
-            Debug.Log($"{TurnOrderIdx}번마");
             yield return wfs;
             camMovement.ChangeVcamFollow(camObj, camIdx);
             yield return wfs;
@@ -203,7 +194,7 @@ public class BattleSystem : MonoBehaviour
         downArrowMove.ShowDownArrow();
             
         CountPlayer();
-        traitManager.SpecialTraitUpdate((PlayerInfo)TurnOrderList[TurnOrderIdx]);//특수 특성 효과 업데이트
+        traitManager.SpecialTraitUpdate((PlayerInfo)TurnOrderList[TurnOrderIdx]);
         camMovement.updateFreeCamPos = true;
         Turn++;
         
@@ -237,7 +228,8 @@ public class BattleSystem : MonoBehaviour
         TurnOrderIdx = 0;
         StartCoroutine(SetupBattle());
     }
-
+    
+    // 죽은 유닛들을 한 사이클이 끝나고 삭제하는 메소드
     private void ClearDeadUnit()
     {
         for (int i = TurnOrderList.Count - 1; i >= 0; i--)

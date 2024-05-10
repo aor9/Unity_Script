@@ -22,7 +22,8 @@ public class OverlayTile : MonoBehaviour
     public Vector2Int grid2DLocation { get { return new Vector2Int(gridLocation.x, gridLocation.y); } }
 
     public List<Sprite> paths;
-
+    
+    // overlayTiled을 화면에 표시하는 메소드
     public void ShowTile(ActionState actionState)
     {
         if (isBlocked is false)
@@ -43,13 +44,16 @@ public class OverlayTile : MonoBehaviour
         
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
     }
-
+    
+    
+    // 스킬 범위 타일 표시하는 메소드
     public void ShowSkillTile()
     {
         gameObject.GetComponent<SpriteRenderer>().color = new Color(0.6f, 0.6f, 0, 0.8f);
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2;
     }
     
+    // 표시 활성화된 타일 숨기는 메소드
     public void HideTile()
     {
         gameObject.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0);

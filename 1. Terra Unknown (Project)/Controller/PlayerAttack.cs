@@ -310,30 +310,6 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private IEnumerator GiveDamage(CharacterInfo enemy, int enemyIdx, float attackDamage)
-    {
-        yield return new WaitForSeconds(0.5f);
-        enemy.hp -= (float)attackDamage;
-
-        if (enemy.hp == 0)
-        {
-            Destroy(enemy.gameObject);
-            battleSystem.TurnOrderList.RemoveAt(enemyIdx);
-            if (enemyIdx < battleSystem.TurnOrderIdx)
-            {
-                battleSystem.TurnOrderIdx -= 1;
-            }
-
-            //turnOrderUI.DestroyUI(enemyIdx);
-            Debug.Log("적 사망");
-        }
-        else
-
-        {
-            Debug.Log("공격 실패.");
-        }
-    }
-    
     IEnumerator ShowHUD()
     {
         yield return wfs;

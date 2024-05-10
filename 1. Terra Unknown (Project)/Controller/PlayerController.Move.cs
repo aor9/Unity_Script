@@ -10,8 +10,6 @@ using AnimationState = Assets.PixelFantasy.PixelHeroes.Common.Scripts.CharacterS
 
 public partial class PlayerController
 {
-    //TODO : Move 관련 메소드 클래스에서 분리하기
-    
     public void GetInRangeTiles(CharacterInfo character)
     {
         HideCurrentTiles();
