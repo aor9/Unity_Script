@@ -17,10 +17,11 @@ public class Define
         Trait,
         BossNodeMap,
         NormalNodeMap,
+        Basic,
+        Special,
         Event,
         Shop,
         RestSite,
-        Main
     }
 
     public enum Sound

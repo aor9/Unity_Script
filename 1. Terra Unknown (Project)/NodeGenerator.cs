@@ -155,7 +155,6 @@ public class NodeGenerator : MonoBehaviour
         DisplaySelectableNode();
     }
     
-    // TODO:노드를 선택했을 때 해당 노드의 타입에 맞는 던전으로 들어가게함.
     private void EnterDungeon(NodeInfo clickedNode)
     {
         DontDestroyOnLoad(nodeMapRoot);
@@ -167,10 +166,10 @@ public class NodeGenerator : MonoBehaviour
         switch (clickedNode.type)
         {
             case NodeType.Basic:
-                LoadingSceneController.Instance.LoadScene("test");
+                LoadingSceneController.Instance.LoadScene(Define.Scene.Basic);
                 break;
             case NodeType.Special:
-                LoadingSceneController.Instance.LoadScene("test");
+                LoadingSceneController.Instance.LoadScene(Define.Scene.Special);
                 break;
             case NodeType.Event:
                 Managers.Scene.LoadScene(Define.Scene.Event);
